@@ -18,6 +18,7 @@ $(document).ready(function () {
             chatMessagesElm.append(messageElement);
         }
         $("html, body").scrollTop($(document).height());
+        $("time.timeago").timeago();
     }
 
     function connectToServer() {
