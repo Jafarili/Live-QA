@@ -53,6 +53,10 @@ $(document).ready(function () {
         }
         roomID = path.substring(1);
 
+        if (document.cookie.split(';').some((item) => item.trim().startsWith('name='))) {
+            name = document.cookie.replace(/(?:(?:^|.*;\s*)name\s*\=\s*([^;]*).*$)|^.*$/, "$1");
+        }
+
         $('#invite-link').val(window.location.href);
 
         const changeNameModal = new bootstrap.Modal('#name-modal', {
@@ -63,8 +67,12 @@ $(document).ready(function () {
 
         $('#change-name-save').click(function () {
             name = $('#change-name-input').val();
+            if (name === '') {
+                return;
+            }
             $('#name-prefix').text(name + ":");
             changeNameModal.hide();
+            document.cookie = `name=${name}; max-age=31536000; path=/`;
         });
 
         document.getElementById('name-modal').addEventListener('shown.bs.modal', () => {
