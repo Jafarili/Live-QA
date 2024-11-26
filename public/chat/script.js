@@ -112,8 +112,18 @@ $(document).ready(function () {
                 inviteModal.show();
             }
         }, 1000);
+        resetChatInputHeight();
     }
 });
+
+$(window).on('resize', function(){
+    resetChatInputHeight();
+});
+
+function resetChatInputHeight() {
+    var chatInputHeight = $('.chat-input').outerHeight()
+    $('.chat-container').css('margin-bottom', chatInputHeight + 'px');
+}
 
 function uuidv4() {
     return "10000000-1000-4000-8000-100000000000".replace(/[018]/g, c =>
