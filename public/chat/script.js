@@ -21,7 +21,7 @@ $(document).ready(function () {
     }
 
     function connectToServer() {
-        socket = new WebSocket('ws://q-a.local/ws?id=' + roomID);
+        socket = new WebSocket('wss://q-a.live/ws?id=' + roomID);
 
         socket.onopen = function (event) {
             console.log('Connected to server');
